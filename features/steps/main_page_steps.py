@@ -8,12 +8,12 @@ MARKET_BUTTON = (By.CSS_SELECTOR,'a[href="/"]')
 
 @given ('open main page')
  def open_main_page(context)
-    context.app.base_page.open_main_page()
+   context.app.base_page.open_main_page()
 
 
 @when('login into page')
  def login(context)
-    context.app.login_page.login()
+   context.app.login_page.login()
 
 
 @when('click on market on the left side menu')

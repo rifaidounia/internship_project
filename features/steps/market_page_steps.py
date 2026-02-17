@@ -19,11 +19,11 @@ AGENCY_TAG = (By.CSS_SELECTOR, 'div[class="new-market-card-tag"]')
     context.app.base_page.click_on_agency(*AGENCY_FILTER).click()
 
 
-@then ('Verify all cards have the “Agency” tag')
-  def verify_agency_tag(context)
-    cards = context.app.base_page.find_element(*AGENCY_FILTER)
+ @then ('Verify all cards have the “Agency” tag')
+   def verify_agency_tag(context)
 
-     for c in cards:
-     tag = context.app.base_page.find_element(*AGENCY_TAG)
-     assert tag is in cards, 'tag not found'
+    cards = context.app.base_page.find_element(*AGENCY_FILTER)
+    for card in cards:
+        tag = context.app.base_page.find_element(*AGENCY_TAG)
+        assert tag is in cards, 'tag not found'
 

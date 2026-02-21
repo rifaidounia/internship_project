@@ -5,7 +5,7 @@ from behave import given, when, then
 from time import sleep
 
 AGENCY_CARDS = (By.CSS_SELECTOR,'div[class="new-market-description"]')
-AGENCY_FILTER = (By.CSS_SELECTOR, 'div.new-market-tag[wized="servicesOffersFilterAgency"]')
+AGENCY_FILTER = (By.XPATH, "//*[@wized='servicesOffersFilterAgency']")
 AGENCY_TAG = (By.CSS_SELECTOR, 'div[class="new-market-card-tag"]')
 MARKET_TAG = (By.CSS_SELECTOR, 'div[class="new-market-txt-tags"]')
 

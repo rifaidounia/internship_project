@@ -58,7 +58,6 @@ def before_step(context, step):
 
 
 
-
 def after_step(context, step):
     if step.status == 'failed':
         print('\nStep failed: ', step)
@@ -66,3 +65,10 @@ def after_step(context, step):
 
 def after_scenario(context, feature):
     context.driver.quit()
+
+#Allur#
+#to run allure report the command is
+#behave -f allure_behave.formatter:AllureFormatter -o test_results/
+#and you have to specify which feature to run so the full command is
+#ex: behave -f allure_behave.formatter:AllureFormatter -o test_results/features/tests/main_page.feature
+#then type to generate the report: allure serve test_results/

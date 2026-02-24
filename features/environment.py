@@ -10,9 +10,9 @@ def browser_init(context, scenario_name):
     """
     :param context: Behave context
     """
- #   driver_path = ChromeDriverManager().install()
- #   service = Service(driver_path)
- #   context.driver = webdriver.Chrome(service=service)
+    driver_path = ChromeDriverManager().install()
+    service = Service(driver_path)
+    context.driver = webdriver.Chrome(service=service)
 
     #Firefox#
 #    driver_path = GeckoDriverManager().install()
@@ -25,20 +25,20 @@ def browser_init(context, scenario_name):
 #    context.driver = webdriver.Chrome(options=options)
 
     #Browserstack#
-    bs_user = 'douniarifai_YM36D2'
-    bs_key = 'MgYNxwWB9uSy3vu5QPWh'
-    url = f'https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-
-    options = Options()
-    bstack_options = {
-        "os" : "Windows",
-        "osVersion" : "11",
-        "browserVersion" : "latest",
-        'browserName': 'Chrome',
-        'sessionName': scenario_name,
-     }
-    options.set_capability('bstack:options', bstack_options)
-    context.driver = webdriver.Remote(command_executor=url, options=options)
+    # bs_user = 'douniarifai_YM36D2'
+    # bs_key = 'MgYNxwWB9uSy3vu5QPWh'
+    # url = f'https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    #
+    # options = Options()
+    # bstack_options = {
+    #     "os" : "Windows",
+    #     "osVersion" : "11",
+    #     "browserVersion" : "latest",
+    #     'browserName': 'Chrome',
+    #     'sessionName': scenario_name,
+    #  }
+    # options.set_capability('bstack:options', bstack_options)
+    # context.driver = webdriver.Remote(command_executor=url, options=options)
 
 
 

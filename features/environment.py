@@ -10,9 +10,22 @@ def browser_init(context, scenario_name):
     """
     :param context: Behave context
     """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+    # driver_path = ChromeDriverManager().install()
+    # service = Service(driver_path)
+    # context.driver = webdriver.Chrome(service=service)
+
+    #Mobil Web Config#
+    mobile_emulation = {
+        "deviceName": "Nexus 7"  # Choose a mobile device
+    }
+
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option("mobileEmulation", mobile_emulation)
+
+    # Initialize WebDriver with mobile emulation
+    services = Service(ChromeDriverManager().install())
+    context.driver = webdriver.Chrome(service=services, options=options)
+
 
     #Firefox#
 #    driver_path = GeckoDriverManager().install()
@@ -41,8 +54,6 @@ def browser_init(context, scenario_name):
     # context.driver = webdriver.Remote(command_executor=url, options=options)
 
 
-
-
     context.app = Application(context.driver)
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
@@ -52,16 +63,12 @@ def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)
     browser_init(context, scenario.name)
 
-
 def before_step(context, step):
     print('\nStarted step: ', step)
-
-
 
 def after_step(context, step):
     if step.status == 'failed':
         print('\nStep failed: ', step)
-
 
 def after_scenario(context, feature):
     context.driver.quit()

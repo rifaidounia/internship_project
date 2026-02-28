@@ -10,21 +10,21 @@ def browser_init(context, scenario_name):
     """
     :param context: Behave context
     """
-    # driver_path = ChromeDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Chrome(service=service)
+    driver_path = ChromeDriverManager().install()
+    service = Service(driver_path)
+    context.driver = webdriver.Chrome(service=service)
 
     #Mobil Web Config#
-    mobile_emulation = {
-        "deviceName": "Nexus 7"  # Choose a mobile device
-    }
-
-    options = webdriver.ChromeOptions()
-    options.add_experimental_option("mobileEmulation", mobile_emulation)
-
-    # Initialize WebDriver with mobile emulation
-    services = Service(ChromeDriverManager().install())
-    context.driver = webdriver.Chrome(service=services, options=options)
+    # mobile_emulation = {
+    #     "deviceName": "Nexus 7"  # Choose a mobile device
+    # }
+    #
+    # options = webdriver.ChromeOptions()
+    # options.add_experimental_option("mobileEmulation", mobile_emulation)
+    #
+    # # Initialize WebDriver with mobile emulation
+    # services = Service(ChromeDriverManager().install())
+    # context.driver = webdriver.Chrome(service=services, options=options)
 
 
     #Firefox#
@@ -44,8 +44,9 @@ def browser_init(context, scenario_name):
     #
     # options = Options()
     # bstack_options = {
-    #     "os" : "Windows",
-    #     "osVersion" : "11",
+    #     "os" : "ios",
+    #     "deviceName" : "iPhone 15",
+    #     "osVersion" : "26",
     #     "browserVersion" : "latest",
     #     'browserName': 'Chrome',
     #     'sessionName': scenario_name,

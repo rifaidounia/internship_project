@@ -15,7 +15,6 @@ def open_main_page(context):
 @when('log into page')
 def login(context):
    context.app.login_page.login()
-   sleep(5)
 
 
 @when('Click on “market” in the left side menu')

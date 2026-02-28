@@ -10,9 +10,9 @@ def browser_init(context, scenario_name):
     """
     :param context: Behave context
     """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+    # driver_path = ChromeDriverManager().install()
+    # service = Service(driver_path)
+    # context.driver = webdriver.Chrome(service=service)
 
     #Mobil Web Config#
     # mobile_emulation = {
@@ -33,9 +33,9 @@ def browser_init(context, scenario_name):
 #    context.driver = webdriver.Firefox(service=service)
 
     #HEADLESS MODE#
-#    options = webdriver.ChromeOptions()
-#    options.add_argument('headless')
-#    context.driver = webdriver.Chrome(options=options)
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    context.driver = webdriver.Chrome(options=options)
 
     #Browserstack#
     # bs_user = 'douniarifai_YM36D2'

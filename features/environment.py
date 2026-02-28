@@ -49,11 +49,11 @@ def browser_init(context, scenario_name):
 
     options = Options()
     bstack_options = {
-        "os" : "Windows",
-        "osVersion" : "11",
-        'browserName': "Chrome",
+        "deviceName" : "iPhone 15",
+        "osVersion" : "26",
         "browserVersion" : "latest",
-        "sessionName": scenario_name,
+        'browserName': 'Chrome',
+        'sessionName': scenario_name,
      }
     options.set_capability('bstack:options', bstack_options)
     context.driver = webdriver.Remote(command_executor=url, options=options)
@@ -66,9 +66,16 @@ def browser_init(context, scenario_name):
     #     'browserName': 'Chrome',
     #     'sessionName': scenario_name,
 
+    #Windows Browserstack Config#
+    # "os": "Windows",
+    # "osVersion": "11",
+    # 'browserName': "Chrome",
+    # "browserVersion": "latest",
+    # "sessionName": scenario_name,
+
 
     context.app = Application(context.driver)
-    context.driver.maximize_window()
+    # context.driver.maximize_window()
     context.driver.implicitly_wait(4)
 
 

@@ -15,16 +15,16 @@ def browser_init(context, scenario_name):
     # context.driver = webdriver.Chrome(service=service)
 
     #Mobil Web Config#
-    # mobile_emulation = {
-    #     "deviceName": "Nexus 7"  # Choose a mobile device
-    # }
-    #
-    # options = webdriver.ChromeOptions()
-    # options.add_experimental_option("mobileEmulation", mobile_emulation)
-    #
-    # # Initialize WebDriver with mobile emulation
-    # services = Service(ChromeDriverManager().install())
-    # context.driver = webdriver.Chrome(service=services, options=options)
+    mobile_emulation = {
+        "deviceName": "Nexus 7"  # Choose a mobile device
+    }
+
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option("mobileEmulation", mobile_emulation)
+
+    # Initialize WebDriver with mobile emulation
+    services = Service(ChromeDriverManager().install())
+    context.driver = webdriver.Chrome(service=services, options=options)
 
 
     #Firefox#
@@ -43,28 +43,20 @@ def browser_init(context, scenario_name):
     # context.driver = webdriver.Firefox(options=options)
 
     #Browserstack#
-    bs_user = 'douniarifai_YM36D2'
-    bs_key = 'MgYNxwWB9uSy3vu5QPWh'
-    url = f'https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-
-    options = Options()
-    bstack_options = {
-        "deviceName" : "iPhone 15",
-        "osVersion" : "26",
-        "browserVersion" : "latest",
-        'browserName': 'Chrome',
-        'sessionName': scenario_name,
-     }
-    options.set_capability('bstack:options', bstack_options)
-    context.driver = webdriver.Remote(command_executor=url, options=options)
-
-    #Mobile Browserstack Config#
-    #     "os": "ios",
+    # bs_user = 'douniarifai_YM36D2'
+    # bs_key = 'MgYNxwWB9uSy3vu5QPWh'
+    # url = f'https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    #
+    # options = Options()
+    # bstack_options = {
     #     "deviceName" : "iPhone 15",
     #     "osVersion" : "26",
     #     "browserVersion" : "latest",
     #     'browserName': 'Chrome',
     #     'sessionName': scenario_name,
+    #  }
+    # options.set_capability('bstack:options', bstack_options)
+    # context.driver = webdriver.Remote(command_executor=url, options=options)
 
     #Windows Browserstack Config#
     # "os": "Windows",

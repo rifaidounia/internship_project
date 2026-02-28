@@ -32,31 +32,39 @@ def browser_init(context, scenario_name):
 #    service = Service(driver_path)
 #    context.driver = webdriver.Firefox(service=service)
 
-    #HEADLESS MODE#
+    #Chrome HEADLESS MODE#
     # options = webdriver.ChromeOptions()
     # options.add_argument('headless')
     # context.driver = webdriver.Chrome(options=options)
 
-    options = webdriver.FirefoxOptions()
-    options.add_argument('headless')
-    context.driver = webdriver.Firefox(options=options)
+    #Firefox Headless Mode#
+    # options = webdriver.FirefoxOptions()
+    # options.add_argument('headless')
+    # context.driver = webdriver.Firefox(options=options)
 
     #Browserstack#
-    # bs_user = 'douniarifai_YM36D2'
-    # bs_key = 'MgYNxwWB9uSy3vu5QPWh'
-    # url = f'https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-    #
-    # options = Options()
-    # bstack_options = {
-    #     "os" : "ios",
+    bs_user = 'douniarifai_YM36D2'
+    bs_key = 'MgYNxwWB9uSy3vu5QPWh'
+    url = f'https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+
+    options = Options()
+    bstack_options = {
+        "os" : "Windows",
+        "osVersion" : "11",
+        'browserName': "Chrome",
+        "browserVersion" : "latest",
+        "sessionName": scenario_name,
+     }
+    options.set_capability('bstack:options', bstack_options)
+    context.driver = webdriver.Remote(command_executor=url, options=options)
+
+    #Mobile Browserstack Config#
+    #     "os": "ios",
     #     "deviceName" : "iPhone 15",
     #     "osVersion" : "26",
     #     "browserVersion" : "latest",
     #     'browserName': 'Chrome',
     #     'sessionName': scenario_name,
-    #  }
-    # options.set_capability('bstack:options', bstack_options)
-    # context.driver = webdriver.Remote(command_executor=url, options=options)
 
 
     context.app = Application(context.driver)

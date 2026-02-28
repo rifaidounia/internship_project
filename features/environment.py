@@ -33,9 +33,13 @@ def browser_init(context, scenario_name):
 #    context.driver = webdriver.Firefox(service=service)
 
     #HEADLESS MODE#
-    options = webdriver.ChromeOptions()
+    # options = webdriver.ChromeOptions()
+    # options.add_argument('headless')
+    # context.driver = webdriver.Chrome(options=options)
+
+    options = webdriver.FirefoxOptions()
     options.add_argument('headless')
-    context.driver = webdriver.Chrome(options=options)
+    context.driver = webdriver.Firefox(options=options)
 
     #Browserstack#
     # bs_user = 'douniarifai_YM36D2'
